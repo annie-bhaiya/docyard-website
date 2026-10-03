@@ -1,0 +1,2 @@
+71f35cdc04a01273f7d52b11dafdcaf846d9dd15e3f4e6d163238164aaeeb580  docyard-windows-beta.exe
+9a25e91fec52932af476cbcf1173f8993ac998c7a8dfe54b5befcb007b4ce3d7  docyard-android-beta.apk

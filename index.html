@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07070a">
+  <meta name="description" content="Meet the Docyard beta. A private, on-device home for your documents, with thoughtful tools to organize, prepare, and check them. For Windows and Android.">
+  <title>Docyard Beta — Your documents. Entirely yours.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2307070a'/%3E%3Cpath d='M20 15h14l11 11v23H20z' fill='none' stroke='%23f5f5ee' stroke-width='3'/%3E%3Cpath d='M34 15v12h11M27 36h12M27 42h8' fill='none' stroke='%23c7d5b5' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/instrumentserif-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Docyard home"><span class="brand-mark" aria-hidden="true">d.</span>docyard<span class="beta-tag">BETA</span></a>
+    <nav aria-label="Main navigation"><a href="#tour">Inside Docyard</a><a href="#principles">The idea</a><a class="nav-cta" href="#beta">Get the beta <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-orbit" aria-hidden="true"><span></span><i></i></div>
+      <p class="eyebrow hero-in"><span class="status-dot"></span> A MORE PERSONAL KIND OF STORAGE</p>
+      <h1 class="hero-in" id="hero-title">Your documents.<br>Entirely <em>yours.</em></h1>
+      <div class="hero-bottom hero-in">
+        <p>Life comes with paperwork.<br>Give it a private place to belong.</p>
+        <div class="hero-action"><a class="button button-primary" href="#beta">Make room for what matters <span aria-hidden="true">↗</span></a><span class="micro">WINDOWS + ANDROID · BETA RELEASE</span></div>
+      </div>
+      <div class="hero-footnote"><span>ON YOUR DEVICE. ON YOUR TERMS.</span><a href="#tour" aria-label="Explore Docyard below">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
+    </section>
+    <section class="product-section wrap" id="tour" aria-labelledby="tour-title">
+      <div class="section-top reveal"><span class="eyebrow">01 / A LITTLE LESS SEARCHING</span><span class="micro device-label">THE DESKTOP EXPERIENCE</span></div>
+      <div class="product-heading reveal"><h2 id="tour-title">Everything in its <em>right place.</em></h2><p>A familiar home for the things you need.<br>A thoughtful workspace for what comes next.</p></div>
+      <div class="tour-controls reveal" role="tablist" aria-label="Explore app screens">
+        <button role="tab" id="tab-vault" aria-controls="tour-panel" aria-selected="true" data-screen="vault">01 <span>Your vault</span></button>
+        <button role="tab" id="tab-editor" aria-controls="tour-panel" aria-selected="false" tabindex="-1" data-screen="editor">02 <span>Document studio</span></button>
+        <button role="tab" id="tab-health" aria-controls="tour-panel" aria-selected="false" tabindex="-1" data-screen="health">03 <span>Health check</span></button>
+      </div>
+      <div class="screen-stage reveal" role="tabpanel" id="tour-panel" aria-labelledby="tab-vault" tabindex="0">
+        <div class="screen-window" data-tilt>
+          <div class="window-bar" aria-hidden="true"><span class="window-dots">● ● ●</span><span>docyard / private workspace</span><span class="window-lock">LOCAL ↗</span></div>
+          <picture id="tour-picture"><source media="(max-width: 767px)" srcset="assets/screenshots/vault-mobile.jpg" width="390" height="844"><img id="tour-image" src="assets/screenshots/vault-desktop.jpg" width="1440" height="1000" alt="Docyard vault showing organized sample documents and folders" fetchpriority="high" decoding="async"></picture>
+        </div>
+        <span class="stage-label stage-label-left" aria-hidden="true">LESS CLUTTER.<br>MORE CLARITY.</span><span class="stage-label stage-label-right" aria-hidden="true">YOUR EVERYDAY<br>PEACE OF MIND.</span>
+      </div>
+      <div class="screen-caption"><p id="tour-caption" aria-live="polite">A home for every document. Search, organize, and pick up where you left off.</p><span>ACTUAL APP · SAMPLE DATA</span></div>
+    </section>
+    <section class="principles wrap" id="principles" aria-labelledby="principles-title">
+      <div class="principles-intro reveal"><span class="eyebrow">02 / BUILT AROUND YOU</span><h2 id="principles-title">Private by design.<br><em>Simple by nature.</em></h2><p>Your documents don't need another cloud.<br>They need a place you can call your own.</p></div>
+      <div class="principles-list">
+        <article class="principle reveal"><span class="principle-number">01</span><div><h3>A home on your device.</h3><p>Your vault is stored locally. Core document tools work on your device, so your paperwork stays close.</p></div><span class="principle-icon" aria-hidden="true">⌂</span></article>
+        <article class="principle reveal"><span class="principle-number">02</span><div><h3>Ready for the next step.</h3><p>Resize a photo. Compress a PDF. Add a watermark. Prepare your documents without jumping between tools.</p></div><span class="principle-icon" aria-hidden="true">↗</span></article>
+        <article class="principle reveal"><span class="principle-number">03</span><div><h3>The details, together.</h3><p>Read document text and compare names and dates across records. Spot differences before you need them.</p></div><span class="principle-icon" aria-hidden="true">◎</span></article>
+      </div>
+    </section>
+    <section class="studio wrap" aria-labelledby="studio-title">
+      <div class="studio-copy reveal"><span class="eyebrow">03 / FROM STORED TO SORTED</span><h2 id="studio-title">Paperwork.<br>With the <em>work</em><br>taken out.</h2><p>Small tools for life's little admin.<br>All in one calm, considered space.</p><a class="text-link" href="#tour" data-open-screen="editor">Step inside the studio <span aria-hidden="true">↗</span></a></div>
+      <figure class="detail-screen reveal"><div class="detail-screen-bar"><span class="status-dot"></span> THE DOCUMENT STUDIO</div><picture><source media="(max-width: 767px)" srcset="assets/screenshots/editor-mobile.jpg" width="390" height="844"><img src="assets/screenshots/editor-desktop.jpg" width="1440" height="1000" loading="lazy" decoding="async" alt="Docyard document editor with a sample preview and tools for preparing files"></picture><figcaption>One workspace. Preview, prepare, and protect.</figcaption></figure>
+    </section>
+    <section class="device-section wrap" aria-labelledby="device-title">
+      <div class="device-heading reveal"><span class="eyebrow">04 / WHEREVER LIFE HAPPENS</span><h2 id="device-title">Room to work.<br>Ready to <em>go.</em></h2><p>A spacious workspace on your PC.<br>A pocket-sized vault on Android.<br>The same familiar feeling.</p></div>
+      <div class="device-notes reveal"><div><span class="device-symbol" aria-hidden="true">▱</span><h3>At your desk.</h3><p>Search shortcuts, a full document studio, and room to see the whole picture.</p><span class="micro">WINDOWS DESKTOP</span></div><div><span class="device-symbol" aria-hidden="true">▯</span><h3>In your pocket.</h3><p>Touch-friendly controls, quick navigation, and your essential documents close at hand.</p><span class="micro">ANDROID MOBILE</span></div></div>
+      <p class="device-note reveal">Each device has its own local vault. Automatic cloud sync is not part of this beta.</p>
+    </section>
+    <section class="beta-section" id="beta" aria-labelledby="beta-title">
+      <div class="wrap">
+        <div class="beta-intro reveal"><span class="eyebrow"><span class="status-dot"></span> THE FIRST CHAPTER</span><h2 id="beta-title">A little more organized.<br>A lot more <em>yours.</em></h2><p>Meet the Docyard beta.<br>Try it with a few documents. Make yourself at home.</p></div>
+        <div class="download-grid reveal" id="downloads">
+          <a class="download-card" data-platform="windows" href="downloads/docyard-windows-beta.exe" download><span class="download-icon" aria-hidden="true">▱</span><span class="download-body"><span class="micro">FOR YOUR DESK</span><strong>Download for Windows</strong><span class="download-meta">Portable beta · Windows x64</span></span><span class="download-arrow" aria-hidden="true">↗</span></a>
+          <a class="download-card" data-platform="android" href="downloads/docyard-android-beta.apk" download><span class="download-icon" aria-hidden="true">▯</span><span class="download-body"><span class="micro">FOR YOUR POCKET</span><strong>Download for Android</strong><span class="download-meta">Test APK · Direct install</span></span><span class="download-arrow" aria-hidden="true">↗</span></a>
+        </div>
+        <p class="beta-note reveal">An early release, still growing. Keep original copies of important files.<br>Windows is a portable executable; Android is a debug-signed test build. Neither is a store release.</p>
+        <div class="faq reveal" aria-label="Beta questions">
+          <details><summary>Where do my documents live?<span aria-hidden="true">+</span></summary><p>Your vault lives on the device where you add your documents. Core processing runs locally. Links to external guidance open websites in your browser.</p></details>
+          <details><summary>What can I do in the beta?<span aria-hidden="true">+</span></summary><p>Organize PDFs and images into folders, find records, preview documents, read text, prepare images and PDFs, add watermarks, and check consistency across your records. OCR results should always be reviewed.</p></details>
+          <details><summary>How do I install it?<span aria-hidden="true">+</span></summary><p>On Windows, download the portable executable and open it. The desktop interface uses Microsoft Edge WebView2. On Android, download the test APK, open it, and follow your device's installation prompts. The Android beta is distributed directly rather than through the Play Store.</p></details>
+          <details><summary>Do the screenshots match my device?<span aria-hidden="true">+</span></summary><p>Yes. This page shows the mobile app layout on narrow screens and the desktop layout on wider screens. All screenshots are captured from the updated app using fictional sample documents.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap site-footer"><a class="brand" href="#">docyard<span class="beta-tag">BETA</span></a><p>A private place for life's paperwork.</p><a href="#main">BACK TO TOP ↑</a><span class="footer-word" aria-hidden="true">entirely yours.</span></footer>
+</body>
+</html>
