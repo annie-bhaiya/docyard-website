@@ -9,7 +9,8 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2307070a'/%3E%3Cpath d='M20 15h14l11 11v23H20z' fill='none' stroke='%23f5f5ee' stroke-width='3'/%3E%3Cpath d='M34 15v12h11M27 36h12M27 42h8' fill='none' stroke='%23c7d5b5' stroke-width='3'/%3E%3C/svg%3E">
   <link rel="preload" href="assets/instrumentserif-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
-  <script src="demo-site.js" defer></script><script src="script.js" defer></script>
+  <link rel="stylesheet" href="release.css">
+  <script src="demo-site.js" defer></script><script src="script.js" defer></script><script src="release.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -25,7 +26,7 @@
       <h1 class="hero-in" id="hero-title">Your documents.<br>Entirely <em>yours.</em></h1>
       <div class="hero-bottom hero-in">
         <p>Life comes with paperwork.<br>Give it a private place to belong.</p>
-        <div class="hero-action"><a class="button button-primary" href="#beta">Make room for what matters <span aria-hidden="true">↗</span></a><span class="micro">WINDOWS + ANDROID · BETA RELEASE</span></div>
+        <div class="hero-action"><a class="button button-primary" href="#tour">Feel it for yourself <span aria-hidden="true">↓</span></a><a class="hero-download micro" href="#beta">OR GET THE BETA ↗</a></div>
       </div>
       <div class="hero-footnote"><span>ON YOUR DEVICE. ON YOUR TERMS.</span><a href="#tour" aria-label="Explore Docyard below">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
     </section>
@@ -44,14 +45,23 @@
       <div class="screen-stage reveal" role="tabpanel" id="tour-panel" aria-labelledby="tab-vault">
         <div class="screen-window">
           <div class="window-bar"><span class="window-dots" aria-hidden="true">● ● ●</span><span>docyard / Mira’s sample vault</span><span class="window-lock">INTERACTIVE DEMO</span></div>
-          <iframe id="app-demo" title="Interactive Docyard sample vault" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-downloads" src="demo/index.html?device=desktop" allow="fullscreen"></iframe>
+          <div class="app-frame-viewport"><iframe id="app-demo" title="Interactive Docyard sample vault" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-downloads" src="demo/index.html?device=desktop" allow="fullscreen"></iframe><button class="preview-shield" id="preview-shield" aria-label="Expand interactive preview"><span>Expand to try <b aria-hidden="true">↗</b></span></button></div>
         </div>
-        <button class="exit-demo" id="exit-demo">← Back to website</button>
+        <div class="expanded-toolbar"><span class="micro">DOCYARD / SAMPLE VAULT</span><button id="expanded-reset">↺ Reset</button><button class="exit-demo" id="exit-demo">← Close preview</button></div>
       </div>
+      <p class="preview-hint"><span aria-hidden="true">↕</span> Keep scrolling. Expand when you want to explore.</p>
       <div class="tour-progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="screen-caption"><p id="tour-caption" aria-live="polite">Explore freely, or watch a guided tour. Every control belongs to the actual app.</p><span>LIVE APP UI · FICTIONAL DATA</span></div>
       <p class="demo-disclosure">A sample vault in your browser. Changes reset on reload. Adding a file inserts a fictional document; OCR, compression, and protection are simulated. Demo PIN: <strong>2468</strong>.</p>
       <noscript><p>Enable JavaScript to explore the interactive vault. Downloads and release details are available below.</p></noscript>
+    </section>
+    <section class="use-cases wrap" id="everyday" aria-labelledby="everyday-title">
+      <div class="release-heading reveal"><div><span class="eyebrow">MADE FOR REAL LIFE</span><h2 id="everyday-title">For whatever<br>comes <em>next.</em></h2></div><p>A new journey. A new opportunity.<br>Or just a little less everyday admin.</p></div>
+      <div class="use-case-grid">
+        <a class="use-case-card reveal" href="#tour" data-open-screen="vault" data-delay="0"><span class="micro">01 / THE NEXT JOURNEY</span><div class="case-art travel-art" aria-hidden="true"><div class="ticket"><small>YOUR NEXT CHAPTER</small><b>Ready to go.</b><span>PASS<span>→</span>PORT</span><i></i></div><span class="art-stamp">ALL IN<br>ONE PLACE</span></div><h3>A calmer departure.</h3><p>Keep your passport, insurance, and travel paperwork in one familiar place.</p><span class="case-link">Explore the vault <b>↗</b></span></a>
+        <a class="use-case-card reveal" href="#tour" data-open-screen="editor" data-delay="90"><span class="micro">02 / THE NEXT OPPORTUNITY</span><div class="case-art prepare-art" aria-hidden="true"><div class="file-stack"><span>application.pdf</span><i></i><i></i><i></i><b>PREPARED ✓</b></div><span class="size-chip">A little lighter. ↘</span></div><h3>Ready for the form.</h3><p>Resize a photograph, prepare a PDF, or add a watermark before you send it.</p><span class="case-link">Try the document studio <b>↗</b></span></a>
+        <a class="use-case-card reveal" href="#tour" data-open-screen="health" data-delay="180"><span class="micro">03 / THE LITTLE DETAILS</span><div class="case-art check-art" aria-hidden="true"><div class="record-line"><span>PASSPORT</span><b>Mira Sen</b><i>✓</i></div><div class="record-line"><span>PAN CARD</span><b>Mira S.</b><i>!</i></div><span class="review-chip">One detail to review</span></div><h3>Catch it before you need it.</h3><p>Compare names and dates across your records. Give inconsistencies a second look.</p><span class="case-link">See the sample health check <b>↗</b></span></a>
+      </div>
     </section>
     <section class="principles wrap" id="principles" aria-labelledby="principles-title">
       <div class="principles-intro reveal"><span class="eyebrow">02 / BUILT AROUND YOU</span><h2 id="principles-title">Private by design.<br><em>Simple by nature.</em></h2><p>Your documents don't need another cloud.<br>They need a place you can call your own.</p></div>
@@ -70,6 +80,19 @@
       <div class="device-notes reveal"><div><span class="device-symbol" aria-hidden="true">▱</span><h3>At your desk.</h3><p>Search shortcuts, a full document studio, and room to see the whole picture.</p><span class="micro">WINDOWS DESKTOP</span></div><div><span class="device-symbol" aria-hidden="true">▯</span><h3>In your pocket.</h3><p>Touch-friendly controls, quick navigation, and your essential documents close at hand.</p><span class="micro">ANDROID MOBILE</span></div></div>
       <p class="device-note reveal">Each device has its own local vault. Automatic cloud sync is not part of this beta.</p>
     </section>
+    <section class="beta-notes wrap" id="release-notes" aria-labelledby="notes-title">
+      <div class="release-heading reveal"><div><span class="eyebrow">BETA / FIELD NOTES</span><h2 id="notes-title">A considered start.<br><em>Room to grow.</em></h2></div><p>The essentials are here.<br>Here’s what you can expect today.</p></div>
+      <div class="release-grid">
+        <article class="release-card reveal"><span class="release-pill"><span class="status-dot"></span> IN THIS BETA</span><h3>A workspace that earns its place.</h3><ul class="capability-list"><li><span>01</span><div><strong>Collect & find</strong><p>Local folders, vault search, PDF and image previews.</p></div></li><li><span>02</span><div><strong>Read & prepare</strong><p>Text extraction, image resizing, PDF compression, and watermarks.</p></div></li><li><span>03</span><div><strong>Review & recover</strong><p>Document consistency checks and Recently Deleted.</p></div></li></ul></article>
+        <article class="release-card release-aside reveal" data-delay="100"><span class="micro">A FEW THINGS TO KNOW</span><h3>Local means<br><em>your device.</em></h3><p>Windows and Android each have their own vault. Automatic cloud sync is not included.</p><p>This is an early release. Keep original copies, review extracted text, and try a few sample documents first.</p><div class="beta-format"><span>WINDOWS</span><b>Portable · x64</b><span>ANDROID</span><b>Android 7+ · Test APK</b></div><a class="text-link" href="#getting-started">Your first few minutes ↘</a></article>
+      </div>
+    </section>
+    <section class="getting-started wrap" id="getting-started" aria-labelledby="start-title">
+      <div class="release-heading reveal"><div><span class="eyebrow">A LITTLE GUIDANCE</span><h2 id="start-title">Make yourself<br><em>at home.</em></h2></div><div class="install-tabs" role="tablist" aria-label="Installation platform"><button id="install-windows" role="tab" data-install="windows" aria-selected="true" aria-controls="installation">Windows</button><button id="install-android" role="tab" data-install="android" aria-selected="false" aria-controls="installation" tabindex="-1">Android</button></div></div>
+      <div id="installation" role="tabpanel" aria-labelledby="install-windows" class="journey reveal"><div class="journey-line" aria-hidden="true"><span></span></div><article><span class="step-number">01</span><h3 id="install-step-title">Download. Open.</h3><p id="install-step-copy">Get the portable Windows executable and open it. The desktop interface uses Microsoft Edge WebView2.</p></article><article><span class="step-number">02</span><h3>A vault of your own.</h3><p>Follow the welcome guide and choose your vault PIN. Keep it somewhere you can retrieve it.</p></article><article><span class="step-number">03</span><h3>Start with something small.</h3><p>Add a sample PDF or photo. Try search, a preview, and one editing tool. Keep your original file.</p></article></div>
+      <div class="start-foot reveal"><span id="install-note">Portable beta executable · Windows x64</span><a class="text-link" href="#beta">Choose your download ↗</a></div>
+    </section>
+    <section class="feedback-section wrap reveal" id="feedback" aria-labelledby="feedback-title"><div><span class="eyebrow">HELP SHAPE THE NEXT CHAPTER</span><h2 id="feedback-title">Something feel<br><em>out of place?</em></h2><p>A useful bug report starts with what happened, what you expected, and how to repeat it.</p></div><form id="feedback-form"><label for="feedback-platform">Your platform</label><select id="feedback-platform"><option>Android</option><option>Windows</option><option>Website demo</option></select><label for="feedback-summary">What happened?</label><textarea id="feedback-summary" rows="3" maxlength="1500" placeholder="For example: the preview stopped responding after…" required></textarea><div class="feedback-actions"><button class="button button-primary" type="submit">Copy a report <span aria-hidden="true">↗</span></button><span id="feedback-status" role="status">Nothing is sent. You choose where to share.</span></div><p class="feedback-note">Paste your report wherever you received this beta. Leave out document contents, personal details, and your PIN.</p><textarea id="feedback-output" aria-label="Prepared report to copy" readonly hidden></textarea></form></section>
     <section class="beta-section" id="beta" aria-labelledby="beta-title">
       <div class="wrap">
         <div class="beta-intro reveal"><span class="eyebrow"><span class="status-dot"></span> THE FIRST CHAPTER</span><h2 id="beta-title">A little more organized.<br>A lot more <em>yours.</em></h2><p>Meet the Docyard beta.<br>Try it with a few documents. Make yourself at home.</p></div>
@@ -90,4 +113,5 @@
   <footer class="wrap site-footer"><a class="brand" href="#">docyard<span class="beta-tag">BETA</span></a><p>A private place for life's paperwork.</p><a href="#main">BACK TO TOP ↑</a><span class="footer-word" aria-hidden="true">entirely yours.</span></footer>
 </body>
 </html>
+
 
