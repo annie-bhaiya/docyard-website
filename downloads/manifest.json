@@ -1,18 +1,18 @@
 {
   "channel": "beta",
-  "builtAt": "2026-10-03T07:45:56.345Z",
+  "builtAt": "2026-10-26T07:11:55.756Z",
   "files": [
     {
       "platform": "windows",
       "filename": "docyard-windows-beta.exe",
-      "bytes": 12019200,
-      "sha256": "4f5cba1ed4e27d2fc1104465c5a20b35d773779cd85e5b19e9cb5b8e9d89b4a1"
+      "bytes": 15606272,
+      "sha256": "ecc59836b068a286771508f355e8dac33e4c3b34dc4b6d8b6bfacca37668246f"
     },
     {
       "platform": "android",
       "filename": "docyard-android-beta.apk",
-      "bytes": 49844486,
-      "sha256": "cc3f1fa2886b251719003b7fd0bca687ca2f33f9e6bb6c28e02d36b06a1293ab"
+      "bytes": 60662929,
+      "sha256": "4c0455a10749185ea3734df5501a71aee79d9f886b3722575b1c19ed3d8f1ef2"
     }
   ]
 }
