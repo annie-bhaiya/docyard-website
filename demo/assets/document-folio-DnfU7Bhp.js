@@ -1,0 +1,1 @@
+var e=``+new URL(`document-folio-DflTshzL.png`,import.meta.url).href;export{e as t};

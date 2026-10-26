@@ -20,15 +20,18 @@ mobile.addEventListener('change', syncPreviewSize);
 let ready = false;
 let playing = false;
 let selected = 'vault';
+let session = 0;
+let loadedDevice;
 let theme = 'dark';
 try { theme = localStorage.getItem('docyard-site-theme') === 'light' ? 'light' : 'dark'; } catch {}
 const send = (type, payload = {}) => frame.contentWindow?.postMessage({ channel: 'docyard-site', type, ...payload }, location.origin);
-function setPlaying(value) { playing = value; play.textContent = value ? 'Ⅱ Stop tour' : '▶ Watch it work'; play.setAttribute('aria-pressed', String(value)); }
+function setPlaying(value) { playing = value; play.innerHTML = `${siteIcon(value ? 'pause' : 'play')}<span>${value ? 'Stop tour' : 'Watch it work'}</span>`; play.setAttribute('aria-pressed', String(value)); }
 function pause() { send('pause'); if (playing) status.textContent = 'Tour paused · explore or replay'; setPlaying(false); }
 function setTheme(value) {
   theme = value; document.documentElement.dataset.theme = theme;
   document.querySelector('#theme-toggle').setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`);
-  document.querySelector('#theme-toggle').textContent = theme === 'dark' ? '☼' : '☾';
+  document.querySelector('#theme-toggle').innerHTML = siteIcon(theme === 'dark' ? 'sun' : 'moon');
+  document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#111816' : '#f5f6f1';
   try { localStorage.setItem('docyard-site-theme', theme); } catch {}
   if (ready) send('theme', { theme });
 }
@@ -46,12 +49,18 @@ function selectScreen(name, focus = false) {
 function loadDemo() {
   ready = false; pause(); play.disabled = true;
   status.textContent = 'Loading your sample workspace…';
-  frame.src = `demo/index.html?device=${mobile.matches ? 'mobile' : 'desktop'}`;
+  loadedDevice = mobile.matches ? 'mobile' : 'desktop';
+  frame.src = `demo/index.html?device=${loadedDevice}&session=${++session}`;
   document.querySelectorAll('.device-label').forEach(el => { el.textContent = mobile.matches ? 'THE MOBILE EXPERIENCE' : 'THE DESKTOP EXPERIENCE'; });
 }
-loadDemo(); mobile.addEventListener('change', loadDemo);
+loadDemo(); mobile.addEventListener('change', () => {
+  // Browsers can dispatch a media change notification without a different
+  // device class (for example when capturing a full page). Preserve the vault.
+  if (loadedDevice !== (mobile.matches ? 'mobile' : 'desktop')) loadDemo();
+});
+frame.addEventListener('load', () => send('hello'));
 window.addEventListener('message', event => {
-  if (event.origin !== location.origin || event.source !== frame.contentWindow || event.data?.channel !== 'docyard-demo') return;
+  if (event.origin !== location.origin || event.source !== frame.contentWindow || event.data?.channel !== 'docyard-demo' || event.data.session !== String(session)) return;
   const data = event.data;
   if (data.type === 'ready' && !ready) { ready = true; play.disabled = false; status.textContent = compactMode() ? 'Live preview · expand to explore' : 'Live · click anywhere to explore'; send('theme', { theme }); send('navigate', { screen: selected }); }
   if (data.type === 'route') markTab(data.screen);
