@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "docyard.live",
+  "Id": "1b1f3258-83cd-4e85-b41e-fe00d855034e"
+}
