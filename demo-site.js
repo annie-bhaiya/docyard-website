@@ -19,13 +19,14 @@ new ResizeObserver(syncPreviewSize).observe(previewViewport);
 mobile.addEventListener('change', syncPreviewSize);
 let ready = false;
 let playing = false;
-let selected = 'vault';
+let selected = 'health';
+let pendingScreen = selected;
 let session = 0;
 let loadedDevice;
-let theme = 'dark';
-try { theme = localStorage.getItem('docyard-site-theme') === 'light' ? 'light' : 'dark'; } catch {}
+let theme = 'light';
+try { theme = localStorage.getItem('docyard-site-theme') === 'dark' ? 'dark' : 'light'; } catch {}
 const send = (type, payload = {}) => frame.contentWindow?.postMessage({ channel: 'docyard-site', type, ...payload }, location.origin);
-function setPlaying(value) { playing = value; play.innerHTML = `${siteIcon(value ? 'pause' : 'play')}<span>${value ? 'Stop tour' : 'Watch it work'}</span>`; play.setAttribute('aria-pressed', String(value)); }
+function setPlaying(value) { playing = value; play.innerHTML = `${siteIcon(value ? 'pause' : 'play')}<span>${value ? 'Stop tour' : 'Play tour'}</span>`; play.setAttribute('aria-pressed', String(value)); }
 function pause() { send('pause'); if (playing) status.textContent = 'Tour paused · explore or replay'; setPlaying(false); }
 function setTheme(value) {
   theme = value; document.documentElement.dataset.theme = theme;
@@ -43,11 +44,11 @@ function markTab(name, focus = false) {
   tabs.forEach(tab => { const active = tab.dataset.screen === name; tab.setAttribute('aria-selected', String(active)); tab.tabIndex = active ? 0 : -1; if (active && focus) tab.focus({ preventScroll: true }); });
 }
 function selectScreen(name, focus = false) {
-  pause(); markTab(name, focus); if (ready) send('navigate', { screen: name });
-  caption.textContent = { vault: 'Make yourself at home. Search, open a document, or create a folder.', editor: 'Try the actual editing controls. Sample changes create a new copy in your vault.', health: 'Compare the fictional records. The sample PAN card has a name mismatch.' }[name];
+  pause(); pendingScreen = name; markTab(name, focus); if (ready) send('navigate', { screen: name });
+  caption.textContent = { home: 'Start with document health and your next review.', vault: 'Make yourself at home. Search, open a document, or create a folder.', editor: 'Try the actual editing controls. Sample changes create a new copy in your vault.', health: 'Compare the fictional records. The sample PAN card has a name mismatch.' }[name];
 }
 function loadDemo() {
-  ready = false; pause(); play.disabled = true;
+  ready = false; pendingScreen = selected; pause(); play.disabled = true;
   status.textContent = 'Loading your sample workspace…';
   loadedDevice = mobile.matches ? 'mobile' : 'desktop';
   frame.src = `demo/index.html?device=${loadedDevice}&session=${++session}`;
@@ -63,7 +64,7 @@ window.addEventListener('message', event => {
   if (event.origin !== location.origin || event.source !== frame.contentWindow || event.data?.channel !== 'docyard-demo' || event.data.session !== String(session)) return;
   const data = event.data;
   if (data.type === 'ready' && !ready) { ready = true; play.disabled = false; status.textContent = compactMode() ? 'Live preview · expand to explore' : 'Live · click anywhere to explore'; send('theme', { theme }); send('navigate', { screen: selected }); }
-  if (data.type === 'route') markTab(data.screen);
+  if (data.type === 'route' && ready && (!pendingScreen || data.screen === pendingScreen)) { pendingScreen = null; markTab(data.screen); }
   if (data.type === 'interaction') { setPlaying(false); status.textContent = 'You’re in control · explore freely'; }
   if (data.type === 'step') { caption.textContent = data.text; document.querySelectorAll('.tour-progress span').forEach((el, i) => el.classList.toggle('active', i <= data.index)); }
   if (data.type === 'complete') { setPlaying(false); status.textContent = 'Your turn · try the sample vault'; }
@@ -77,7 +78,7 @@ play.addEventListener('click', () => {
   panel.scrollIntoView({ block: 'center', behavior: 'instant' });
   setPlaying(true); status.textContent = compactMode() ? 'A little tour · expand to take over' : 'Guided tour · touch the app to take over'; send('play');
 });
-document.querySelector('#reset-demo').addEventListener('click', () => { selected = 'vault'; loadDemo(); caption.textContent = 'A fresh sample vault. Everything is ready to try again.'; document.querySelectorAll('.tour-progress span').forEach(el => el.classList.remove('active')); });
+document.querySelector('#reset-demo').addEventListener('click', () => { selected = 'health'; loadDemo(); caption.textContent = 'A fresh sample vault. Everything is ready to try again.'; document.querySelectorAll('.tour-progress span').forEach(el => el.classList.remove('active')); });
 tabs.forEach((tab, index) => {
   tab.addEventListener('click', () => selectScreen(tab.dataset.screen));
   tab.addEventListener('keydown', event => {
@@ -125,7 +126,7 @@ function expand(value) {
 }
 document.querySelector('#expand-demo').addEventListener('click', () => expand(true));
 document.querySelector('#preview-shield').addEventListener('click', () => expand(true));
-document.querySelector('#expanded-reset').addEventListener('click', () => { selected = 'vault'; loadDemo(); });
+document.querySelector('#expanded-reset').addEventListener('click', () => { selected = 'health'; loadDemo(); });
 document.querySelector('#exit-demo').addEventListener('click', () => expand(false));
 document.addEventListener('keydown', event => {
   if (!panel.classList.contains('expanded')) return;

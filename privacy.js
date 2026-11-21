@@ -1,6 +1,6 @@
 const toggle = document.querySelector('#theme-toggle');
-let theme = 'dark';
-try { theme = localStorage.getItem('docyard-site-theme') === 'light' ? 'light' : 'dark'; } catch {}
+let theme = 'light';
+try { theme = localStorage.getItem('docyard-site-theme') === 'dark' ? 'dark' : 'light'; } catch {}
 function apply() {
   document.documentElement.dataset.theme = theme;
   toggle.textContent = theme === 'dark' ? 'Light' : 'Dark';
